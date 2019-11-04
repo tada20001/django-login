@@ -7,5 +7,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls')),
 
-    path('', lambda reqest: redirect("/blog/")),
+    path('', lambda reqest: redirect("blog:post_list")),
 ]
