@@ -6,9 +6,17 @@
   </head>
   <body>
     <h1>Login Project</h1>
-    회원가입
-    로그인
-    로그아웃
+    {% if  user.is_authenticated %}
+      환영합니다. {{ user }}님.
+      로그아웃
+    {% else %}
+      <a href="{% url 'login' %}?next={{ request.path }}">로그인</a>
+      회원가입
+    {% endif %}
+
+
+
+    <hr>
 
     {% block content %}{% endblock %}
 
