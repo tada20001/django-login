@@ -10,6 +10,7 @@ from django.conf import settings
 @login_required
 def profile(request):
     return render(request, 'accounts/profile.html')
+
 '''
 def signup(request):
     if request.method == 'POST':
@@ -18,8 +19,9 @@ def signup(request):
             user = form.save()
             # 가입과 동시에 여기에서 로그인 처리하기
             auth_login(request, user)  # form_valid 함수에 들어 있음
+            next_url = request.GET.get('next') or 'profile' # 회원가입시에 next 인자 처리하기 위해 request의 GET querydict에서 next인자를 가져옴. 없으면 profile로 이동
             #return redirect('settings.LOGIN_URL')  # 가입 성공하면 로그인 페이지로 이동
-            return redirect('profile')
+            return redirect('next_url')
     else:
         form = UserCreationForm()
     return render(request, 'accounts/signup.html', {'form': form,})
@@ -31,8 +33,9 @@ class SignupView(CreateView):
     template_name = 'accounts/signup.html'
 
     def get_success_url(self):
+        next_url = self.request.GET.get('next') or 'profile'
         #return '/admin/'  # admin으로 직접 갈 경우에는 이렇게 설정
-        return resolve_url('profile')
+        return resolve_url(next_url)
 
     def form_valid(self, form):
         user = form.save()
