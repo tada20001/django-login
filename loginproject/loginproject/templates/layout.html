@@ -5,9 +5,9 @@
     <title>{% block title %}Login Project{% endblock %}</title>
   </head>
   <body>
-    <h1>Login Project</h1>
+    <a href="{% url "root" %}"><h1>Login Project</h1></a>
     {% if  user.is_authenticated %}
-      환영합니다. {{ user }}님.
+      환영합니다. <a href="{% url "profile" %}">{{ user }}님.</a>
       로그아웃
     {% else %}
       <a href="{% url 'login' %}?next={{ request.path }}">로그인</a>
