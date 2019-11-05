@@ -125,4 +125,5 @@ STATIC_URL = '/static/'
 from django.urls import reverse_lazy
 LOGIN_URL = reverse_lazy('login')
 
-LOGIN_REDIRECT_URL = '/admin/'  # login하면 리다이렉트할 url 설정
+#LOGIN_REDIRECT_URL = '/admin/'  # login하면 리다이렉트할 url 설정
+LOGIN_REDIRECT_URL = '/accounts/profile/'
