@@ -129,3 +129,23 @@ LOGIN_URL = reverse_lazy('login')
 LOGIN_REDIRECT_URL = reverse_lazy('profile')
 
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
+
+# email 설정 :
+
+# console backends
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # debugging 목적으로 사용
+
+EMAIL_HOST = 'local host'
+EMAIL_PORT = 25  # 일반적인 SMPT Port 번호
+
+# Whether to send SMTP 'Date' header in the local time zone or in UTC
+#EMAIL_USE_LOCALTIME = False
+
+# Optional SMTP authentication information for EMAIL_HOST
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = False
+EMAIL_SSL_CERTFILE = None
+EMAIL_SSL_KEYFILE = None
+EMAIL_TIMEOUT = None
