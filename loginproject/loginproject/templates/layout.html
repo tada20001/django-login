@@ -14,7 +14,13 @@
       <a href="{% url 'signup' %}?next={{ request.path }}">회원가입</a>
     {% endif %}
 
-
+    {% if messages %}
+      {% for message in messages %}
+        <ul>
+          {{ message.message }}
+        </ul>
+      {% endfor %}
+    {% endif %}
 
     <hr>
 
